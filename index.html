@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr" class="bg-black text-gray-300">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takemura Takashi | Archives 35mm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&family=Playfair+Display:ital@1&display=swap');
+        
+        body { font-family: 'JetBrains Mono', monospace; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .grain {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Noise.png');
+            opacity: 0.03;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="relative">
+    <div class="grain fixed inset-0 z-50"></div>
+
+    <nav class="p-8 flex justify-between items-center border-b border-gray-900 sticky top-0 bg-black z-40">
+        <h1 class="text-xl tracking-tighter font-bold text-white uppercase">Takemura // Takashi</h1>
+        <span class="text-xs text-red-600 uppercase tracking-widest animate-pulse font-bold">● En Service</span>
+    </nav>
+
+    <header class="h-screen flex flex-col justify-center px-8 md:px-24">
+        <p class="text-sm uppercase tracking-[0.3em] mb-4 text-gray-500 italic uppercase">Chauffeur de l'Ombre & Archiviste</p>
+        <h2 class="text-5xl md:text-8xl leading-none serif text-white">« L'image est une preuve. <br> Le silence est un devoir. »</h2>
+    </header>
+
+    <section class="p-8 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-gray-900">
+        <div class="space-y-4">
+            <div class="bg-gray-900 aspect-video overflow-hidden">
+                <img src="TON_IMAGE_1.png" alt="Los Santos Night" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
+            </div>
+            <p class="text-xs uppercase text-gray-600 tracking-widest italic">01. Los Santos - 04:12 AM - Seven Stars Smoke</p>
+        </div>
+        <div class="space-y-4 md:mt-24">
+            <div class="bg-gray-900 aspect-video overflow-hidden">
+                <img src="TON_IMAGE_2.png" alt="Black Sedan" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
+            </div>
+            <p class="text-xs uppercase text-gray-600 tracking-widest italic">02. Bureau mobile - Cuir & Silence</p>
+        </div>
+    </section>
+
+    <section class="p-8 md:p-24 space-y-12 max-w-4xl border-t border-gray-900">
+        <h3 class="text-2xl text-white underline decoration-red-600">DOSSIER : TAKASHI</h3>
+        <p class="text-lg leading-relaxed italic">
+            "Je suis né le 23 mars 2003 à Osaka. Ici, je ne suis qu'un fantôme au volant. Mon frère Takeshi et moi formons le rempart. 
+            Mon Nikon F3 est mon seul confident quand les moteurs se taisent."
+        </p>
+        <div class="grid grid-cols-2 gap-8 text-sm pt-8">
+            <div>
+                <h4 class="text-white font-bold mb-2">VICES</h4>
+                <p>Seven Stars (Import JP)</p>
+                <p>Nostalgie d'Osaka</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-2">CIVIL</h4>
+                <p>Quête d'optiques rares</p>
+                <p>Exposition Del Perro (In Progress)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-8 text-center text-[10px] text-gray-700 border-t border-gray-900">
+        PROPRIÉTÉ DU CLAN TAKEMURA - TOUS DROITS RÉSERVÉS - © 2026
+    </footer>
+</body>
+</html>
