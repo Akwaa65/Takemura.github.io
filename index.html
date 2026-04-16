@@ -4,69 +4,261 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takemura Takashi | Archives 35mm</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script> 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&family=Playfair+Display:ital@1&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,700&family=JetBrains+Mono&display=swap');
         
-        body { font-family: 'JetBrains Mono', monospace; }
+        :root {
+            --primary: #ffffff;
+            --accent: #991b1b; 
+            --bg: #000000;
+        }
+
+        /* --- CONFIGURATION DU SCROLL (FLUIDITÉ TOTALE) --- */
+        html {
+            scroll-behavior: auto; /* Indispensable pour Lenis */
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg);
+            color: #a1a1aa;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* On a enlevé scroll-snap ici pour la liberté de mouvement */
+
         .serif { font-family: 'Playfair Display', serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+
+        /* --- EFFETS VISUELS --- */
+        .parallax-bg {
+            background-image: url('Takemura001.png'); 
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: saturate(1.1) contrast(1.1);
+        }
+
+        .content-mask {
+            background: linear-gradient(to bottom, transparent 0%, var(--bg) 100vh);
+        }
+
         .grain {
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Noise.png');
-            opacity: 0.03;
+            opacity: 0.02;
             pointer-events: none;
         }
+
+        .section-title {
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        /* Scrollbar ultra-fine et discrète */
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+
+        .hover-lift { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .hover-lift:hover { transform: translateY(-15px); }
     </style>
 </head>
 <body class="relative">
     <div class="grain fixed inset-0 z-50"></div>
 
-    <nav class="p-8 flex justify-between items-center border-b border-gray-900 sticky top-0 bg-black z-40">
-        <h1 class="text-xl tracking-tighter font-bold text-white uppercase">Takemura // Takashi</h1>
-        <span class="text-xs text-red-600 uppercase tracking-widest animate-pulse font-bold">● En Service</span>
-    </nav>
+    <div class="parallax-bg fixed inset-0 z-0">
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
 
-    <header class="h-screen flex flex-col justify-center px-8 md:px-24">
-        <p class="text-sm uppercase tracking-[0.3em] mb-4 text-gray-500 italic uppercase">Chauffeur de l'Ombre & Archiviste</p>
-        <h2 class="text-5xl md:text-8xl leading-none serif text-white">« L'image est une preuve. <br> Le silence est un devoir. »</h2>
-    </header>
+    <div class="content-mask relative z-10 w-full">
+        
+        <nav class="p-10 flex justify-between items-center mix-blend-difference fixed w-full top-0 z-40">
+            <span class="mono text-white tracking-[0.3em] uppercase">Takemura Takashi</span>
+            <span class="mono text-red-700 font-bold uppercase tracking-widest text-[10px]">● Active Duty</span>
+        </nav>
 
-    <section class="p-8 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-gray-900">
-        <div class="space-y-4">
-            <div class="bg-gray-900 aspect-video overflow-hidden">
-                <img src="TON_IMAGE_1.png" alt="Los Santos Night" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
+        <header class="h-screen flex flex-col justify-end p-10 md:p-24 pb-32">
+            <div class="max-w-5xl">
+                <h2 class="text-6xl md:text-[9rem] serif italic text-white section-title mb-8">
+                    Le Silence <br>& l'Image.
+                </h2>
+                <p class="mono text-gray-400 uppercase tracking-widest max-w-md">
+                    L'image est une preuve. <br>Le silence est un devoir.
+                </p>
             </div>
-            <p class="text-xs uppercase text-gray-600 tracking-widest italic">01. Los Santos - 04:12 AM - Seven Stars Smoke</p>
-        </div>
-        <div class="space-y-4 md:mt-24">
-            <div class="bg-gray-900 aspect-video overflow-hidden">
-                <img src="TON_IMAGE_2.png" alt="Black Sedan" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
-            </div>
-            <p class="text-xs uppercase text-gray-600 tracking-widest italic">02. Bureau mobile - Cuir & Silence</p>
-        </div>
-    </section>
+        </header>
 
-    <section class="p-8 md:p-24 space-y-12 max-w-4xl border-t border-gray-900">
-        <h3 class="text-2xl text-white underline decoration-red-600">DOSSIER : TAKASHI</h3>
-        <p class="text-lg leading-relaxed italic">
-            "Je suis né le 23 mars 2003 à Osaka. Ici, je ne suis qu'un fantôme au volant. Mon frère Takeshi et moi formons le rempart. 
-            Mon Nikon F3 est mon seul confident quand les moteurs se taisent."
-        </p>
-        <div class="grid grid-cols-2 gap-8 text-sm pt-8">
-            <div>
-                <h4 class="text-white font-bold mb-2">VICES</h4>
-                <p>Seven Stars (Import JP)</p>
-                <p>Nostalgie d'Osaka</p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-2">CIVIL</h4>
-                <p>Quête d'optiques rares</p>
-                <p>Exposition Del Perro (In Progress)</p>
-            </div>
-        </div>
-    </section>
+        <section class="min-h-screen bg-black flex items-center py-40 px-10 md:px-24">
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-12 w-full">
+				<div class="md:col-span-4 mono text-red-800 font-bold relative">01 // QUI SUIS-JE ?
+				<span class="absolute left-0 top-0 mt-8 text-6xl md:text-8xl opacity-100 pointer-events-none whitespace-nowrap" 
+                  style="writing-mode: vertical-rl; text-orientation: upright;">私は誰ですか？
+				</span>
+				</div>
 
-    <footer class="p-8 text-center text-[10px] text-gray-700 border-t border-gray-900">
-        PROPRIÉTÉ DU CLAN TAKEMURA - TOUS DROITS RÉSERVÉS - © 2026
-    </footer>
+				<div class="md:col-span-8 space-y-12">
+					<h3 class="text-4xl md:text-6xl text-white serif italic section-title">L'héritage des Takemura.</h3>
+				<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+						Je suis né le 23 mars 2003. À cette époque, Shinjuku n'était pas un décor de carte postale pour touristes ; c'était un échiquier de béton où le Shinsei-gumi plaçait ses pions. Mon père était l'un de ces pions essentiels, un homme de l'ombre qui traitait directement avec les hautes sphères. Dans notre maison, le silence n'était pas l'absence de bruit, c'était une discipline. On ne parlait pas pour ne rien dire. On écoutait le murmure de la ville.
+						</p>
+					<h3 class="text-4xl md:text-4xl text-white serif italic section-title">L’Éveil du Regard (2003 - 2017)</h3>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					Mon frère, Takeshi, a toujours été le soleil. Brillant, fort, imposant. Moi, j'étais la lune, celle qui ne brille que par reflet. Très tôt, j'ai compris que je ne serais jamais celui qui brise les portes. Mon truc à moi, c'était de savoir ce qu'il y avait derrière avant même qu'on les touche.
+					</p>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					À quatorze ans, mon père m'a convoqué dans son bureau. Il n'y avait pas de longs discours. Il a posé son vieux boîtier argentique sur la table. "Takashi," m'a-t-il dit, "tout le monde sait frapper. Peu savent regarder. Sois celui qui voit la faille avant que l'ennemi ne s'en aperçoive." Ce jour-là, j'ai cessé d'être un simple gamin de Shinjuku. Je suis devenu un capteur. J'ai passé mes nuits à errer entre Kabukicho et Shibuya, capturant l'éclat des lames dans l'ombre et la sueur des parieurs. J'apprenais à cadrer le chaos pour le rendre prévisible.
+					</p>
+				</div>
+			</div>
+		</section>
+
+        <section class="min-h-screen bg-black flex items-center py-40 px-10 md:px-24">
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-12 w-full">
+				<div class="md:col-span-4 mono text-red-800 font-bold relative">02 // LE DEVOIR
+				<span class="absolute left-0 top-0 mt-8 text-6xl md:text-8xl opacity-100 pointer-events-none whitespace-nowrap" 
+                  style="writing-mode: vertical-rl; text-orientation: upright;">義務
+				</span>
+				</div>
+				
+                <div class="md:col-span-8 space-y-12">
+					<h3 class="text-4xl md:text-4xl text-white serif italic section-title">Les Deux Clés (2018 - 2024)</h3>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					L'adolescence est arrivée avec le poids des responsabilités. Le clan grandissait, et l'Oyabun, Masanori Okabe, avait besoin de fidèles. Nos parents ont décidé que Takeshi et moi serions ses deux mains. On nous a envoyés sur les routes de montagne, les touges, puis dans le labyrinthe urbain de Tokyo pour apprendre la conduite de protection.
+					</p>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					C'était une danse macabre. Takeshi apprenait à utiliser le véhicule comme une arme, moi comme une cape d'invisibilité. On passait des heures, ensemble, à étudier les flux de trafic de Shinjuku. On savait à quelle seconde précise le feu de l'intersection de Shibuya passait au rouge, on connaissait chaque ruelle assez large pour un Crown Royal, mais trop étroite pour une patrouille.
+					</p>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					Pendant que je suivais mes cours aux Beaux-Arts — ma couverture parfaite — je servais d'éclaireur. Je prenais des photos d'architecture, du moins c'est ce que croyaient les flics. En réalité, je cartographiais les angles morts des caméras de surveillance et les sorties de secours des entrepôts où l'Oyabun tenait conseil. J'étais l'œil qui préparait le passage du maître.
+					</p>
+                </div>
+            </div>
+        </section>
+		
+        <section class="min-h-screen bg-black flex items-center py-40 px-10 md:px-24">
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-12 w-full">
+				<div class="md:col-span-4 mono text-red-800 font-bold relative">03 // L'AVENIR
+				<span class="absolute left-0 top-0 mt-8 text-6xl md:text-8xl opacity-100 pointer-events-none whitespace-nowrap" 
+                  style="writing-mode: vertical-rl; text-orientation: upright;">未来
+				</span>
+				</div>
+				
+                <div class="md:col-span-8 space-y-12">
+					<h3 class="text-4xl md:text-4xl text-white serif italic section-title">Le Pacte du Silence (2025 - 2026)</h3>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					L'ordre d'exil est tombé comme un couperet. Le Japon devenait trop étroit, trop surveillé. L'Oyabun avait besoin de s'implanter à Los Santos, une ville de lumière et de sang, à l'image de ce que nous connaissions, mais en plus brutal.					</p>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					Le soir du départ, mes parents nous ont réunis. Pas d'embrassades, juste un échange de regards qui valait tous les contrats. Ils restaient là-bas, garants de notre honneur. Si nous échouions ici, leur vie s'éteindrait avec notre réputation. Mon père m'a serré l'épaule, ses doigts s'enfonçant dans ma veste. "Fais que ton silence soit ton plus grand service," m'a-t-il soufflé.
+					</p>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					Je suis monté dans l'avion avec Takeshi. On n'a pas échangé un mot durant les douze heures de vol. On n'en avait pas besoin. On savait ce qu'on laissait derrière nous : les pluies fines d'Osaka, le vacarme assourdissant de Shinjuku, et la chaleur d'un foyer qu'on ne reverrait peut-être jamais.
+					</p>
+					<h3 class="text-4xl md:text-5xl text-white serif italic section-title">L'Objectif de Los Santos</h3>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					Aujourd'hui, je suis ici, dans cette ville qui hurle. Mon appareil photo ne me quitte jamais. Pour les gens de Los Santos, je suis juste ce photographe étranger un peu sombre qui traîne près des chantiers et des gratte-ciels. Ils ne voient pas que chaque cliché est un rapport de reconnaissance.
+					</p>
+					<p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+					Chaque mois, j'envoie un colis au Japon. Des tirages argentiques, développés dans la solitude de mon labo de fortune. Pour mes parents, ce sont des paysages. Pour ceux qui savent lire mes images, ce sont des preuves que les Takemura tiennent la route, que l'Oyabun est en sécurité, et que le Shinsei-gumi est en train de dévorer la ville, un fragment de pellicule à la fois.
+					</p>
+					<p class="text-xl md:text-1xl text-gray-300 font-light leading-relaxed">
+					L'image est une preuve. Le silence est un devoir. Et moi... je suis celui qui voit tout, sans jamais cligner des yeux. »
+					</p>
+                </div>
+            </div>
+        </section>
+
+		<section class="min-h-screen bg-black py-40 px-10 md:px-24 border-t border-gray-900 flex flex-col justify-center">
+			<div class="mb-16">
+				<span class="mono text-red-800 font-bold block mb-4">03 // LE REFUGE</span>
+				<h3 class="text-4xl md:text-6xl text-white serif italic">Mon sanctuaire.</h3>
+				</div>
+    
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center"> <div class="hover-lift">
+				<div class="bg-zinc-950 aspect-[16/9] overflow-hidden grayscale contrast-125 mb-4 border border-gray-900">
+                <img src="ARCHIVE_001.png" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700">
+				</div>
+				<p class="mono text-[9px] tracking-widest text-gray-600">ARCHIVE_01 // LA NATURE DERRIERE LE BITUME</p>
+				</div>
+
+				<div class="hover-lift max-w-[320px] mx-auto w-full"> 
+				<div class="bg-zinc-950 aspect-[9/16] overflow-hidden grayscale contrast-125 mb-4 border border-gray-900">
+                <img src="ARCHIVE_002.png" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700">
+				</div>
+				<p class="mono text-[9px] tracking-widest text-gray-600">ARCHIVE_02 // PERSPECTIVE URBAINE</p>
+				</div>
+
+			</div>
+		</section>
+
+        <section class="min-h-screen bg-black py-40 px-10 md:px-24 border-t border-gray-900">
+            <div class="mb-20 text-center">
+                <span class="mono text-red-800 font-bold block mb-4">04 // OBJECTIFS</span>
+                <h3 class="text-4xl md:text-5xl text-white serif italic">Ma feuille de route.</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-900 border border-gray-900">
+                <div class="bg-black p-10 space-y-6">
+                    <span class="mono text-red-700 font-bold block">[CLAN]</span>
+                    <h4 class="text-white text-lg uppercase serif italic">Sanctuariser l'Oyabun</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed italic">Sa sécurité est mon honneur. Aucun accroc ne sera toléré sur l'asphalte.</p>
+                </div>
+                <div class="bg-black p-10 space-y-6">
+                    <span class="mono text-red-700 font-bold block">[CLAN]</span>
+                    <h4 class="text-white text-lg uppercase serif italic">Le Nom Takemura</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed italic">Prouver que mon frère et moi sommes les piliers indispensables du clan.</p>
+                </div>
+                <div class="bg-black p-10 space-y-6">
+                    <span class="mono text-red-700 font-bold block">[CLAN]</span>
+                    <h4 class="text-white text-lg uppercase serif italic">L'Archive Finale</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed italic">Rentrer un jour au Japon avec un album témoin de cette conquête.</p>
+                </div>
+                <div class="bg-black p-10 space-y-6">
+                    <span class="mono text-red-700 font-bold block">[CIVIL]</span>
+                    <h4 class="text-white text-lg uppercase serif italic">A Definir</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed italic">A Definir.</p>
+                </div>
+                <div class="bg-black p-10 space-y-6">
+                    <span class="mono text-red-700 font-bold block">[CIVIL]</span>
+                    <h4 class="text-white text-lg uppercase serif italic">A Definir</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed italic">A Definir.</p>
+                </div>
+                <div class="bg-black p-10 space-y-6">
+                    <span class="mono text-red-700 font-bold block">[CIVIL]</span>
+                    <h4 class="text-white text-lg uppercase serif italic">A Definir</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed italic">A Definir.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="py-40 bg-black text-center border-t border-gray-900">
+            <h2 class="text-white serif italic text-8xl mb-12 opacity-30">Takemura.</h2>
+            <div class="space-y-4">
+                <p class="mono text-[10px] text-gray-600 tracking-[0.5em] uppercase">Tokyo Legacy — Los Santos Branch</p>
+                <p class="mono text-[9px] text-gray-800 tracking-[0.3em] uppercase">© 2026 — TOUS DROITS RÉSERVÉS</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const lenis = new Lenis({
+            duration: 2.2, // Légèrement augmenté pour plus de "lenteur élégante"
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            wheelMultiplier: 0.9, // Sensibilité de la molette
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+    </script>
 </body>
 </html>
